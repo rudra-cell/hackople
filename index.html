@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Complaint Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .carousel-item img {
+            height: 400px;
+            object-fit: cover;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .hero-btn {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            z-index: 2;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+        }
+        @media (max-width: 768px) {
+            .carousel-item img {
+                height: 250px;
+            }
+            .hero-btn {
+                position: static;
+                margin: 10px auto;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">DCMS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#problems">Problems</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#signup">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content with Slider -->
+    <div class="carousel " >
+        <button class="btn btn-primary hero-btn" onclick="scrollToForm()">Report Now</button>
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="Flux_Dev_Generate_an_image_of_a_damaged_road_in_an_Indian_city_2.jpeg" class="d-block w-100" alt="Bad Roads">
+                </div>
+                <div class="carousel-item">
+                    <img src="Leonardo_Phoenix_10_Generate_an_image_depicting_a_power_outage_2.jpg" class="d-block w-100" alt="Power Outages">
+                </div>
+                <div class="carousel-item">
+                    <img src="Flux_Dev_Generate_an_image_depicting_water_shortage_in_an_Indi_1.jpeg" class="d-block w-100" alt="Water Shortages">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Complaint Form Section -->
+    <section id="problems" class="container mt-5">
+        <h2 class="text-center mb-4">Report a Problem</h2>
+        <form id="complaintForm" class="row g-3">
+            <div class="col-md-6">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-select" id="category" required>
+                    <option value="">Select Category</option>
+                    <option value="roads">Bad Roads</option>
+                    <option value="power">Power Outages</option>
+                    <option value="water">Water Shortages</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="details" class="form-label">Details</label>
+                <textarea class="form-control" id="details" rows="3" required></textarea>
+            </div>
+            <div class="col-12">
+                <label for="image" class="form-label">Upload Image</label>
+                <input type="file" class="form-control" id="image" accept="image/*">
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Submit Complaint</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2025 Digital Complaint Management System. All rights reserved.</p>
+            <p>Enhancing rural infrastructure through technology</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Custom Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Form submission handling
+        document.getElementById('complaintForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Complaint submitted successfully! Authorities have been notified.');
+            this.reset();
+        });
+
+        // Scroll to form function
+        function scrollToForm() {
+            document.getElementById('problems').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
